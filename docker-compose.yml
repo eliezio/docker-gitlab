@@ -1,0 +1,17 @@
+version: '2.0'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:8.10.1-ce.0
+    container_name: gitlab
+    restart: always
+    volumes:
+      - /opt/gitlab/etc:/etc/gitlab
+      - /opt/gitlab/opt:/var/opt/gitlab
+      - /opt/gitlab/log:/var/log/gitlab
+    environment:
+      - VIRTUAL_HOST=gitlab.labs.riocard.com
+      - VIRTUAL_PORT=80
+    ports:
+      - "8080:80"
+      - "8022:22"
